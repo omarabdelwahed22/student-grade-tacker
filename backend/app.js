@@ -1,9 +1,14 @@
 const express = require("express")
 const app = express()
+const PORT = 3000
+
+app.use(express.json());
+
+const grades = require("./routes/grades");
+app.use("/grades", grades);
+
 
 app.get("/", (req,res)=> {
-    res.send("Hi")
-})
+    res.send("Hi")})
 
-app.listen(3000)
-console.log("Server is runnign on port 3000")
+app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`));
